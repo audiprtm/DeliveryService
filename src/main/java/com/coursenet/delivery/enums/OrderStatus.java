@@ -1,8 +1,8 @@
 package com.coursenet.delivery.enums;
 
-public enum DeliveryStatus {
+public enum OrderStatus {
 	CREATED,
-	IN_DELIVERY,
-	DELIVERED,
+	IN_PROCESS,
+	FINISHED,
 	CANCELLED
 }

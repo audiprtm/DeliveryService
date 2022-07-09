@@ -11,10 +11,18 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import com.coursenet.delivery.enums.DeliveryStatus;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Delivery {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +34,8 @@ public class Delivery {
 	
 	private int shipperId;
 	
+	private String goodsName;
+	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
@@ -34,60 +44,4 @@ public class Delivery {
 	
 	@Enumerated(EnumType.STRING)
 	private DeliveryStatus status;
-	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
-	}
-
-	public String getInvoice() {
-		return invoice;
-	}
-
-	public void setInvoice(String invoice) {
-		this.invoice = invoice;
-	}
-
-	public int getShipperId() {
-		return shipperId;
-	}
-
-	public void setShipperId(int shipperId) {
-		this.shipperId = shipperId;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public DeliveryStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(DeliveryStatus status) {
-		this.status = status;
-	}
 }
