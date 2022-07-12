@@ -1,5 +1,6 @@
 package com.coursenet.delivery.client;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,13 +17,14 @@ import com.coursenet.delivery.dto.OrderResponseDTO;
 @Component
 @Slf4j
 public class OrderServiceClient {
-	private RestTemplate restTemplate = new RestTemplate();
-	
 	@Value("${order.base.url}")
 	private String orderServiceBaseURL;
 	
 	@Value("${order.updateStatus.url.endpoint}")
 	private String orderUpdateStatusURL;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	public void updateStatus(String token, OrderStatusRequestDTO orderStatusRequestDTO) throws Exception {
 		HttpHeaders headers = new HttpHeaders();
